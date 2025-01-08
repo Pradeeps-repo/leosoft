@@ -377,7 +377,8 @@ footer {
     .nav-links {
         position: absolute;
         right: 0px;
-        height: 92vh;
+        height: auto;
+        padding: 20px 0;
         top: 8vh;
         background: var(--white);
         display: flex;
@@ -386,10 +387,33 @@ footer {
         width: 50%;
         transform: translateX(100%);
         transition: transform 0.5s ease-in;
+        z-index: 1000;
+        box-shadow: -2px 0 5px rgba(0,0,0,0.1);
     }
 
     .nav-links li {
         opacity: 0;
+        margin: 10px 0;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 8px 15px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a:hover {
+        background-color: var(--off-white);
+    }
+
+    .nav-links.nav-active {
+        transform: translateX(0%);
+    }
+
+    .nav-links.nav-active li {
+        opacity: 1;
+        transition: opacity 0.5s ease 0.3s;
     }
 
     .burger {
@@ -402,6 +426,19 @@ footer {
 
     .services-grid {
         grid-template-columns: 1fr;
+    }
+
+    /* Burger animation classes */
+    .burger.toggle .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .burger.toggle .line2 {
+        opacity: 0;
+    }
+
+    .burger.toggle .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
     }
 }
 

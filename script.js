@@ -19,6 +19,17 @@ const navSlide = () => {
         // Burger Animation
         burger.classList.toggle('toggle');
     });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!nav.contains(e.target) && !burger.contains(e.target) && nav.classList.contains('nav-active')) {
+            nav.classList.remove('nav-active');
+            burger.classList.remove('toggle');
+            navLinks.forEach(link => {
+                link.style.animation = '';
+            });
+        }
+    });
 }
 
 navSlide();
@@ -66,3 +77,19 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     this.reset();
     currentCaptcha = generateCaptcha();
 });
+
+// Add this keyframe animation to your CSS
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes navLinkFade {
+        from {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+`;
+document.head.appendChild(style);
